@@ -1,4 +1,4 @@
-import { InventoryService, ReserveItemsDto } from '../inventory/inventory.service';
+/* import { InventoryService, ReserveItemsDto } from '../inventory/inventory.service';
 
 export class OrdersService {
   constructor(private inventoryService: InventoryService) {}
@@ -10,4 +10,4 @@ export class OrdersService {
     }
     // TODO: Create order in DB
   }
-}
+} */

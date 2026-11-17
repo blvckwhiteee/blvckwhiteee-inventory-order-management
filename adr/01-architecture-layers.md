@@ -1,33 +1,48 @@
-# 01: Clean Architecture & Fastify for API
+# 01: Чиста архітектура та Fastify для API
 
-## Status
-Accepted
+## Статус
 
-## Context
-We need a robust, scalable backend for the Inventory & Order Management API. The system requires strict transaction handling and clear boundaries between inventory and order logic.
+Ухвалено (Accepted)
 
-## Decision Drivers
-* Need for high performance and low overhead.
-* Strict separation of concerns (Fail-fast, Traceability).
-* Native support for TypeScript.
+## Контекст
 
-## Considered Options
-* **Express.js:** 
-  * *Pros:* Huge ecosystem, familiar. 
-  * *Cons:* Slow routing, poor native async error handling.
-* **NestJS:** 
-  * *Pros:* Out-of-the-box architecture. 
-  * *Cons:* Heavy overhead, too much magic for a service focused on raw DB performance.
-* **Fastify (Chosen):** 
-  * *Pros:* Fastest Node.js web framework, built-in schema validation, excellent async support. 
-  * *Cons:* Smaller ecosystem than Express.
+Нам потрібен надійний та масштабований бекенд для API управління запасами та замовленнями (Inventory & Order Management API). Система вимагає суворої обробки транзакцій та чітких меж між логікою роботи із запасами та замовленнями.
 
-## Decision
-We will use Fastify with a 3-layer architecture (Routes, Services, Repositories). Inter-module communication (Orders -> Inventory) will happen exclusively at the Service layer.
+## Фактори прийняття рішення
 
-## Consequences
-### Positive
-* Extremely high throughput.
-* Clean, testable business logic isolated from HTTP transport.
-### Negative
-* Developers must learn Fastify's plugin and encapsulation system.
+* Потреба у високій продуктивності та низьких накладних витратах.
+* Суворе розділення відповідальності (швидке виявлення помилок (fail-fast), простежуваність).
+* Нативна підтримка TypeScript.
+
+## Розглянуті варіанти
+
+* **Express.js:**
+* *Плюси:* Величезна екосистема, звичний та знайомий інструмент.
+* *Мінуси:* Повільний роутинг, слабка нативна обробка асинхронних помилок.
+
+
+* **NestJS:**
+* *Плюси:* Готова архітектура «з коробки».
+* *Мінуси:* Великі накладні витрати, забагато «магії» для сервісу, орієнтованого на чисту продуктивність бази даних.
+
+
+* **Fastify (Обрано):**
+* *Плюси:* Найшвидший веб-фреймворк для Node.js, вбудована валідація схем, відмінна підтримка асинхронності.
+* *Мінуси:* Менша екосистема порівняно з Express.
+
+
+
+## Рішення
+
+Ми будемо використовувати Fastify з тришаровою архітектурою (Маршрути (Routes), Сервіси (Services), Репозиторії (Repositories)). Взаємодія між модулями (Замовлення -> Запаси) відбуватиметься виключно на рівні сервісів.
+
+## Наслідки
+
+### Позитивні
+
+* Надвисока пропускна здатність.
+* Чиста бізнес-логіка, яка легко тестується та ізольована від транспортного рівня HTTP.
+
+### Негативні
+
+* Розробникам доведеться вивчити систему плагінів та інкапсуляції Fastify.
