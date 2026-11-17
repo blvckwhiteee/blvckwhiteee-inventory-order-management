@@ -1,5 +1,7 @@
 check:
 	npm run lint
 	npm run build
+	npm run test
+
 version:
-	git rev-parse HEAD
+	@echo "Git SHA (App Version): $$(git rev-parse HEAD)"
